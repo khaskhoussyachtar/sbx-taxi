@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">loginScreen</string>
+    <string name="login_title">login to app</string>
+
+    <string name="login_havent_account">
+           don\'t have an account! register
+      </string>
+    <string name="register_title">create an account</string>
+</resources>
