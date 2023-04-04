@@ -6,4 +6,5 @@
            don\'t have an account! register
       </string>
     <string name="register_title">create an account</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

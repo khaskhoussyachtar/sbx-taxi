@@ -1,4 +1,4 @@
-package com.example.loginscreen
+package com.example.loginscreen.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,13 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.loginscreen.Api.Retrofit
+import com.example.loginscreen.QuotesApi
 import com.example.loginscreen.databinding.ActivityMainBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var Username: EditText
     lateinit var Password: EditText
@@ -28,14 +32,33 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
             else{
-                Toast.makeText(this, "${binding.editTextTextEmailAddress.text}is logged in !!", Toast.LENGTH_SHORT).show()
+                val client = Retrofit.getInstance().create(QuotesApi::class.java)
+                val email = binding.editTextTextEmailAddress.text.toString().trim()
+                val password = binding.editTextTextPassword.text.toString().trim()
+
+                GlobalScope.launch() {
+
+                    val result=client.login(email, password,)
+                    if (result != null){
+
+                        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+
+                    }else{
+                        Toast.makeText(applicationContext, "no server reponse", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+
+                // Toast.makeText(this, "${binding.editTextTextEmailAddress.text}is logged in !!", Toast.LENGTH_SHORT).show()//
             }
 
 
 
         }
         binding.tvHaventAccount.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }
