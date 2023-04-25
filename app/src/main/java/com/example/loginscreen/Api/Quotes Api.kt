@@ -1,7 +1,10 @@
 // Retrofit interface
 package com.example.loginscreen
 import android.provider.ContactsContract.CommonDataKinds.Email
+import android.widget.Button
+import com.example.loginscreen.activities.Advancedbook
 import com.example.loginscreen.models.DefaultResponse
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Field
@@ -27,6 +30,8 @@ interface QuotesApi {
 
     @GET("/quotes")
  suspend fun getQuotes() : Response <QuoteList>
+
+
 
 
 }

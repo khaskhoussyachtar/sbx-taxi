@@ -7,4 +7,5 @@
       </string>
     <string name="register_title">create an account</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_advancedbookposition2">AdvancedbookpositionActivity2</string>
 </resources>

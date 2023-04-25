@@ -43,7 +43,7 @@ internal class MapsActivity : AppCompatActivity(), OnMapReadyCallback ,GoogleMap
 
 
     companion object {
-        private const val LOCATION_REQUEST_CODE = 1
+        const val LOCATION_REQUEST_CODE = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

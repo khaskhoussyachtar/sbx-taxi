@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/position_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="1dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:src="@android:drawable/ic_dialog_map" />
+               <Button
+                   android:id="@+id/pickDateBtn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="pick date">
+
+               </Button>
+
+                <TextView
+                    android:id="@+id/date_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="date"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold">
+                </TextView>
+                <Button
+                    android:id="@+id/pickTimeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pick time">
+
+                </Button>
+                <TextView
+                    android:id="@+id/time_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="time :"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold">
+                </TextView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:singleLine="false"
+            />
+        <Button
+            android:id="@+id/send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="20dip"
+            android:text="send"
+            android:textAllCaps="false"
+
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:enabled="false"/>
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

@@ -27,7 +27,7 @@ class Driverdialogfragment: DialogFragment() {
         super.onAttach(context)
     }
 
-    override fun onCreateView(
+/*    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup,
         savedInstanceState: Bundle
@@ -44,7 +44,7 @@ class Driverdialogfragment: DialogFragment() {
         }
         return view;
 
-    }
+    }*/
     companion object
     {
         fun newInstance(content: String) : Driverdialogfragment
