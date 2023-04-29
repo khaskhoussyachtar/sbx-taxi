@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
                 GlobalScope.launch() {
 
-                    val result=client.login(email, password,)
+                    val result=client.login(email, password)
                     if (result != null){
 
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
