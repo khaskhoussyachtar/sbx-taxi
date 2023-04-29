@@ -4,13 +4,19 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.*
 
 import androidx.appcompat.app.AppCompatActivity
+import com.example.loginscreen.Api.Retrofit
+import com.example.loginscreen.QuotesApi
 import com.example.loginscreen.R
 import com.example.loginscreen.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.sql.Time
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,19 +38,58 @@ class Advancedbook : AppCompatActivity(),DatePickerDialog.OnDateSetListener,Time
    var   pickDateBtn:Button? = null
 
     var description: EditText? = null
-
+   private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.advanced_book)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        lateinit var date: Date
+        lateinit var time: Time
         sendBtn=findViewById(R.id.send_btn)
         position_btn=findViewById(R.id.position_btn)
         myTextView = findViewById(R.id.time_txt)
         description = findViewById(R.id.editText)
-      pickDateBtn = findViewById(R.id.pickDateBtn)
+     /* pickDateBtn = findViewById(R.id.pickDateBtn)
         pickDate()
         position_btn.setOnClickListener {  startActivity(Intent(this, AdvancedbookpositionActivity::class.java)) }
+
+       sendBtn.setOnClickListener {
+           Log.i("achtar", "date:${binding.date_txt} ")
+            Log.i("achtar", "time:${binding.pickTimeBtn} ")
+            if (binding..text.isNullOrBlank()&&binding.pickTimeBtn.text.isNullOrBlank()) {
+                Toast.makeText(this, "please fill the required fields", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            else{
+                val client = Retrofit.getInstance().create(QuotesApi::class.java)
+                val date = binding..text.toString().trim()
+                val time = binding.pickTimeBtn.text.toString().trim()
+
+                GlobalScope.launch() {
+
+                    val result=client.addBookAdvance(date, time,)
+                    if (result != null){
+
+                        startActivity(Intent(this@Advancedbook, AdvancedbookpositionActivity::class.java))
+
+                    }else{
+                        Toast.makeText(applicationContext, "no server reponse", Toast.LENGTH_SHORT).show()
+
+                    }
+
+
+                }
+
+
+                // Toast.makeText(this, "${binding.editTextTextEmailAddress.text}is logged in !!", Toast.LENGTH_SHORT).show()//
+            }
+
+
+
+        }*/
     }
+
    /* private fun getDateTimeCalendar()  {
         val cal= Calendar.getInstance()
         day=cal.get(Calendar.DAY_OF_MONTH)

@@ -7,15 +7,7 @@ import android.widget.Toast
 import com.example.loginscreen.Api.Retrofit
 import com.example.loginscreen.QuotesApi
 import com.example.loginscreen.databinding.ActivityRegisterBinding
-import com.example.loginscreen.models.DefaultResponse
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import kotlin.coroutines.coroutineContext
+import kotlinx.coroutines.*
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -47,11 +39,13 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
 
                 // setContentView(R.layout.activity_register)//
-                val client = Retrofit.getInstance().create(QuotesApi::class.java)
-                GlobalScope.launch() {
+            }
+            val client = Retrofit.getInstance().create(QuotesApi::class.java)
+            GlobalScope.launch(Dispatchers.IO) {
+                val result=client.createUser(fullname, email, password)
+                withContext(Dispatchers.Main) {
 
-                    val result=client.createUser(fullname, email, password,)
-                    if (result != null){
+                    if (result != null && result.res){
 
                         startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
 
@@ -59,15 +53,7 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "no server reponse", Toast.LENGTH_SHORT).show()
 
                     }
-
                 }
-
-
-
-
-
-
-
 
 
             }

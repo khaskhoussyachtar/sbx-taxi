@@ -1,5 +1,7 @@
 package com.example.loginscreen.Api
 
+import com.example.loginscreen.models.DefaultResponse
+
 data class Result(
     val _id: String,
     val author: String,
@@ -9,4 +11,9 @@ data class Result(
     val dateModified: String,
     val length: Int,
     val tags: List<String>
+)
+data class SignupResult(
+    val res:Boolean,
+    val response: String,
+
 )
