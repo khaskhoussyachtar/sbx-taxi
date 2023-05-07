@@ -2,6 +2,7 @@ package com.example.loginscreen.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.example.loginscreen.Api.Retrofit
 import com.example.loginscreen.QuotesApi
 import com.example.loginscreen.R
 import com.example.loginscreen.databinding.ActivityMainBinding
+import com.example.loginscreen.databinding.AdvancedBookBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -38,37 +40,39 @@ class Advancedbook : AppCompatActivity(),DatePickerDialog.OnDateSetListener,Time
    var   pickDateBtn:Button? = null
 
     var description: EditText? = null
-   private lateinit var binding: ActivityMainBinding
+   private lateinit var binding: AdvancedBookBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.advanced_book)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+       // setContentView(R.layout.advanced_book)
+        binding = AdvancedBookBinding.inflate(layoutInflater)
         setContentView(binding.root)
         lateinit var date: Date
         lateinit var time: Time
-        sendBtn=findViewById(R.id.send_btn)
+       /* sendBtn=findViewById(R.id.send_btn)
         position_btn=findViewById(R.id.position_btn)
         myTextView = findViewById(R.id.time_txt)
         description = findViewById(R.id.editText)
-     /* pickDateBtn = findViewById(R.id.pickDateBtn)
+       pickDateBtn = findViewById(R.id.pickDateBtn)*/
         pickDate()
-        position_btn.setOnClickListener {  startActivity(Intent(this, AdvancedbookpositionActivity::class.java)) }
+        binding.positionBtn.setOnClickListener {  startActivity(Intent(this, AdvancedbookpositionActivity::class.java)) }
 
        sendBtn.setOnClickListener {
-           Log.i("achtar", "date:${binding.date_txt} ")
-            Log.i("achtar", "time:${binding.pickTimeBtn} ")
-            if (binding..text.isNullOrBlank()&&binding.pickTimeBtn.text.isNullOrBlank()) {
+           Log.i("achtar", "date:${binding.dateTxt} ")
+            Log.i("achtar", "time:${binding.timeTxt} ")
+            if (binding.dateTxt.text.isNullOrBlank()&&binding.timeTxt.text.isNullOrBlank()) {
                 Toast.makeText(this, "please fill the required fields", Toast.LENGTH_SHORT)
                     .show()
             }
             else{
                 val client = Retrofit.getInstance().create(QuotesApi::class.java)
-                val date = binding..text.toString().trim()
-                val time = binding.pickTimeBtn.text.toString().trim()
+                val date = binding.dateTxt.text.toString().trim()
+                val time = binding.timeTxt.text.toString().trim()
+                val sharedPreference =  getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
 
                 GlobalScope.launch() {
-
-                    val result=client.addBookAdvance(date, time,)
+                    val user =sharedPreference.getString("user","")?:""
+                    val token =sharedPreference.getString("token","")?:""
+                    val result=client.addbookAdvance(date + " "+ time,token,false,1,1,user, "")
                     if (result != null){
 
                         startActivity(Intent(this@Advancedbook, AdvancedbookpositionActivity::class.java))
@@ -87,7 +91,7 @@ class Advancedbook : AppCompatActivity(),DatePickerDialog.OnDateSetListener,Time
 
 
 
-        }*/
+        }
     }
 
    /* private fun getDateTimeCalendar()  {

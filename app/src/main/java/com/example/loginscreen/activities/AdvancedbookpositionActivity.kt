@@ -2,6 +2,7 @@ package com.example.loginscreen.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.example.loginscreen.databinding.ActivityAdvancedbookposition2Binding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
+import java.util.Locale
 
 class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener {
 
@@ -36,8 +38,6 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
     }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,9 +59,12 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
         setUpMap()
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
+       /* val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
+        val latLng=LatLng(currentLocation?.latitude!!,currentLocation?.longitude!!)
+        drawMarker(latLng)
+
         val markerView = (getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
             R.layout.marker_layout,
             null
@@ -74,7 +77,17 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
             true
         }
 
+
     }
+    private fun drawMarker(latLng: LatLng){/*
+        MarkerOptions().position(latLng).title("Im here").snippet(getAddress(latLng.latitude,latLng.latitude))*/
+        MarkerOptions().position(latLng)
+    }
+ /*   private fun getAddress(Lat: Double,lon :Double):String?{
+       val geocoder= Geocoder(this,Locale.getDefault())
+      val addresses=  geocoder.getFromLocation(Lat ,lon,1)
+       return [0].getAddressLine(0).toString()
+    }*/
     private fun setUpMap(){
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED ){
 
@@ -105,3 +118,12 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
 
 
 }
+
+
+class MyClass {
+    companion object {
+        const val MY_VARIABLE_1: Int = 42
+        const val MY_VARIABLE_2: String = "Hello World"
+    }
+}
+

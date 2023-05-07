@@ -17,3 +17,7 @@ data class SignupResult(
     val response: String,
 
 )
+data class LoginResult(
+    val res:Boolean,
+    val response: String,
+)

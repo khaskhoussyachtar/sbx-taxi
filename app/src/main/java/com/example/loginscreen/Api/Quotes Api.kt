@@ -2,9 +2,11 @@
 package com.example.loginscreen
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Button
+import com.example.loginscreen.Api.LoginResult
 import com.example.loginscreen.Api.SignupResult
 import com.example.loginscreen.activities.Advancedbook
 import com.example.loginscreen.models.DefaultResponse
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import retrofit2.Call
 import retrofit2.Response
@@ -27,20 +29,28 @@ interface QuotesApi {
     ): SignupResult
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("/login")
     fun login (
         @Field("email") email: String,
         @Field("password") password :String,
-    ): Response<Boolean>
+        @Field("app") app :String="AppTaxi",
+    ): LoginResult
 
     @GET("/quotes")
  suspend fun getQuotes() : Response <QuoteList>
-  /*  @FormUrlEncoded
+   @FormUrlEncoded
     @POST("/addBookAdvance")
-    fun addBookAdvance(
-        @Field("date")  date: Date: Int,
-        @Field("time") time:Time:Int,
-    ): Response<Boolean>*/
+    fun addbookAdvance (
+        @Field("date")  date: String,
+        @Field("token")id: String,
+        @Field("repeat") repeat:Boolean =false,
+        @Field("longitude") long: Long,
+        @Field("latitude") latLng: Long,
+        @Field("username") username: String,
+        @Field("description") description: String,
+
+
+    ): SignupResult
 
 
 
