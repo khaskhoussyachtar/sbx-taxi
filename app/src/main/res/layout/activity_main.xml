@@ -6,70 +6,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:background="@drawable/bg">
 
     <TextView
         android:id="@+id/tv_login_title"
         style="@style/title"
         android:layout_width="267dp"
-        android:layout_height="352dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="96dp"
-        android:layout_marginBottom="72dp"
-        android:text="@string/login_title"
+        android:gravity="center"
+        android:text="LOGIN"
+        android:textStyle="bold"
+        android:translationX="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_havent_account"
-        android:layout_width="319dp"
-        android:layout_height="87dp"
+        android:layout_width="277dp"
+        android:layout_height="100dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="24dp"
         android:text="@string/login_havent_account"
         android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="316dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="16dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
         android:singleLine="false"
         android:textColor="@android:color/black"
+        android:translationX="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.473" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="328dp"
+        android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Password"
+        android:drawableLeft="@drawable/baseline_info"
+        android:drawablePadding="10dp"
         android:inputType="textPassword"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        android:translationX="10dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
         android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:translationX="20dp"
+
 
         android:background="#E43737"
         android:text="login"

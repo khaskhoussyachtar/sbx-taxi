@@ -20,11 +20,13 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.example.loginscreen.databinding.ActivityAdvancedbookposition2Binding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener
 import com.google.android.gms.maps.model.Marker
 import java.util.Locale
 
 class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener {
-
+   var currentMarker:Marker?=null
     private lateinit var mMap: GoogleMap
     private lateinit var lastLocation: Location
     private lateinit var currentLocation: Location
@@ -34,6 +36,7 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private lateinit var binding: ActivityAdvancedbookposition2Binding
+
 
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
@@ -62,8 +65,23 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
        /* val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
-        val latLng=LatLng(currentLocation?.latitude!!,currentLocation?.longitude!!)
-        drawMarker(latLng)
+
+        mMap.setOnMarkerDragListener(object :OnMarkerDragListener{
+            override fun onMarkerDrag(p0: Marker) {
+
+            }
+
+            override fun onMarkerDragEnd(p0: Marker) {
+            if (currentMarker!=null)
+                currentMarker?.remove()
+
+            }
+
+            override fun onMarkerDragStart(p0: Marker) {
+
+            }
+
+        })
 
         val markerView = (getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
             R.layout.marker_layout,
@@ -77,17 +95,23 @@ class AdvancedbookpositionActivity : AppCompatActivity(), OnMapReadyCallback ,Go
             true
         }
 
-
+        val latLng=LatLng(currentLocation?.latitude!!,currentLocation?.longitude!!)
+        drawMarker(latLng)
     }
-    private fun drawMarker(latLng: LatLng){/*
-        MarkerOptions().position(latLng).title("Im here").snippet(getAddress(latLng.latitude,latLng.latitude))*/
-        MarkerOptions().position(latLng)
+    private fun drawMarker(latLng: LatLng){
+        MarkerOptions().position(latLng).title("Im here").snippet(getAddress(latLng.latitude,latLng.latitude)).draggable(true)
+       val markerOption= MarkerOptions().position(latLng)
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+         currentMarker=mMap.addMarker(markerOption)
+        currentMarker?.showInfoWindow()
     }
- /*   private fun getAddress(Lat: Double,lon :Double):String?{
+   private fun getAddress(Lat: Double,lon :Double):String?{
        val geocoder= Geocoder(this,Locale.getDefault())
       val addresses=  geocoder.getFromLocation(Lat ,lon,1)
-       return [0].getAddressLine(0).toString()
-    }*/
+       return addresses?.get(0)?.getAddressLine(0).toString()
+    }
+
     private fun setUpMap(){
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED ){
 

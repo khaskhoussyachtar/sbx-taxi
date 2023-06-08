@@ -3,7 +3,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object Retrofit {
-   val baseUrl = "http://192.168.1.125:4004"
+   val baseUrl = "http://192.168.1.125:4004/"
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder().baseUrl(baseUrl)

@@ -1,22 +1,12 @@
 // Retrofit interface
 package com.example.loginscreen
-import android.provider.ContactsContract.CommonDataKinds.Email
-import android.widget.Button
 import com.example.loginscreen.Api.LoginResult
 import com.example.loginscreen.Api.SignupResult
-import com.example.loginscreen.activities.Advancedbook
-import com.example.loginscreen.models.DefaultResponse
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
-import java.sql.Time
-import java.util.Date
 
 interface QuotesApi {
     @FormUrlEncoded
@@ -30,7 +20,7 @@ interface QuotesApi {
 
     @FormUrlEncoded
     @POST("/login")
-    fun login (
+    suspend fun login (
         @Field("email") email: String,
         @Field("password") password :String,
         @Field("app") app :String="AppTaxi",

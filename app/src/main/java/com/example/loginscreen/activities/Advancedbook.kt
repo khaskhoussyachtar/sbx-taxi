@@ -56,7 +56,7 @@ class Advancedbook : AppCompatActivity(),DatePickerDialog.OnDateSetListener,Time
         pickDate()
         binding.positionBtn.setOnClickListener {  startActivity(Intent(this, AdvancedbookpositionActivity::class.java)) }
 
-       sendBtn.setOnClickListener {
+       binding. sendBtn.setOnClickListener {
            Log.i("achtar", "date:${binding.dateTxt} ")
             Log.i("achtar", "time:${binding.timeTxt} ")
             if (binding.dateTxt.text.isNullOrBlank()&&binding.timeTxt.text.isNullOrBlank()) {
@@ -109,7 +109,7 @@ class Advancedbook : AppCompatActivity(),DatePickerDialog.OnDateSetListener,Time
            /* getDateTimeCalendar()*/
             DatePickerDialog(this, this, datetime.get(Calendar.YEAR), datetime.get(Calendar.MONTH), datetime.get(Calendar.DAY_OF_MONTH),).show()
         }
-        sendBtn.setOnClickListener {  }
+         binding.sendBtn.setOnClickListener {  }
           /*  //difference entre deux day
            // val simpleDateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
            // val startDate = simpleDateFormat.parse("$savedDay/${savedMonth + 1}/$savedYear $savedHour:$savedMinute")

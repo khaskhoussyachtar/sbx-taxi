@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274661434510",
+    "project_id": "resrvtax",
+    "storage_bucket": "resrvtax.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274661434510:android:12f81ee742996aa56415df",
+        "android_client_info": {
+          "package_name": "com.example.loginscreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274661434510-qjffealls8vkg2b0tdtquui19pkdarot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAhFANoe74q0nUjLsgDSUavG8VWSJ9lpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274661434510-qjffealls8vkg2b0tdtquui19pkdarot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

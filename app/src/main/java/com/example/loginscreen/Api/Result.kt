@@ -20,4 +20,6 @@ data class SignupResult(
 data class LoginResult(
     val res:Boolean,
     val response: String,
+    val token: String,
+    val fullname: String,
 )

@@ -31,7 +31,7 @@
                 android:paddingRight="76dp"
                 android:textStyle="bold|italic"
                 android:textSize="25dp"
-                android:text="Samir Gharbi"
+                android:text="Mohamed "
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/age_txt"
